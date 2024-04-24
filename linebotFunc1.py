@@ -45,8 +45,8 @@ def handle_message(event):
     elif mtext == '@傳送貼圖':
         try:
             message = StickerSendMessage(  #貼圖兩個id需查表
-                package_id='1',  
-                sticker_id='2'
+                package_id='11538',  
+                sticker_id='51626494'
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
@@ -56,8 +56,8 @@ def handle_message(event):
         try:
             message = [  #串列
                 StickerSendMessage(  #傳送貼圖
-                    package_id='1',  
-                    sticker_id='2'
+                    package_id='11538',  
+                    sticker_id='51626494'
                 ),
                 TextSendMessage(  #傳送文字
                     text = "這是 Pizza 圖片！"
