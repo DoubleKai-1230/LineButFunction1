@@ -74,10 +74,10 @@ def handle_message(event):
     elif mtext == '@傳送位置':
         try:
             message = LocationSendMessage(
-                title='101大樓',
-                address='台北市信義路五段7號',
-                latitude=25.034207,  #緯度
-                longitude=121.564590  #經度
+                title='世新大學',
+                address='116台北市文山區木柵路一段17巷1號',
+                latitude=24.98907,  #緯度
+                longitude=121.54407  #經度
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
