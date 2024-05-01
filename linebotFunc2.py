@@ -49,15 +49,19 @@ def handle_message(event):
         try:
             message = [  #串列
                 TextSendMessage(  #傳送文字
-                    text = "這是聲音和影片"
+                    text = "這是聲音、影片還有貓貓~"
                 ),
                 AudioSendMessage(
-                original_content_url=baseurl + 'mario.m4a',  #聲音檔置於static資料夾
-                duration=20000  #聲音長度20秒
+                    original_content_url=baseurl + 'mario.m4a',  #聲音檔置於static資料夾
+                    duration=20000  #聲音長度20秒
                 ),
                 VideoSendMessage(
-                original_content_url=baseurl + 'robot.mp4',  #影片檔置於static資料夾
-                preview_image_url=baseurl + 'robot.jpg'
+                    original_content_url=baseurl + 'robot.mp4',  #影片檔置於static資料夾
+                    preview_image_url=baseurl + 'robot.jpg'
+                ),
+                ImageSendMessage(  #傳送圖片
+                    original_content_url =baseurl + 'cat.jpg',
+                    preview_image_url =baseurl + 'cat.jpg'
                 )
             ]
             line_bot_api.reply_message(event.reply_token,message)
