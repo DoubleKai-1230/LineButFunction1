@@ -1,1 +1,1 @@
-web: python linebotFunc1.py
+web: python linebotFunc2.py
