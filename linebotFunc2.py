@@ -48,16 +48,16 @@ def handle_message(event):
     elif mtext == '@多項傳送':
         try:
             message = [  #串列
-                StickerSendMessage(  #傳送貼圖
-                    package_id='1',  
-                    sticker_id='2'
-                ),
                 TextSendMessage(  #傳送文字
-                    text = "這是 Pizza 圖片！"
+                    text = "這是聲音和影片"
                 ),
-                ImageSendMessage(  #傳送圖片
-                    original_content_url = "https://i.imgur.com/4QfKuz1.png",
-                    preview_image_url = "https://i.imgur.com/4QfKuz1.png"
+                AudioSendMessage(
+                original_content_url=baseurl + 'mario.m4a',  #聲音檔置於static資料夾
+                duration=20000  #聲音長度20秒
+                ),
+                VideoSendMessage(
+                original_content_url=baseurl + 'robot.mp4',  #影片檔置於static資料夾
+                preview_image_url=baseurl + 'robot.jpg'
                 )
             ]
             line_bot_api.reply_message(event.reply_token,message)
