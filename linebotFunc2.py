@@ -39,7 +39,8 @@ def handle_message(event):
         sendYes(event)
 
     elif mtext == '玩遊戲':
-        sendButton(event)
+        sendGame(event)
+        
     elif mtext in ['剪刀','石頭','布']:
         randomRespond(event)
 
@@ -106,6 +107,33 @@ def sendYes(event):
         line_bot_api.reply_message(event.reply_token, message)
     except:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
+        
+def sendGame(event):  #按鈕樣版
+    try:
+        message = TemplateSendMessage(
+            alt_text='按鈕樣板',
+            template=ButtonsTemplate(
+                title='剪刀石頭布',  #主標題
+                text='請選擇：',  #副標題
+                actions=[
+                    MessageTemplateAction(  #顯示文字訊息
+                        label='出剪刀',
+                        text='剪刀'
+                    ),
+                    MessageTemplateAction(  #顯示文字訊息
+                        label='出石頭',
+                        text='石頭'
+                    ),
+                    MessageTemplateAction(  #顯示文字訊息
+                        label='出布',
+                        text='布'
+                    ),
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+    except:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))       
         
 def randomRespond(event):
     try:
