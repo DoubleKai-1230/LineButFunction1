@@ -37,10 +37,10 @@ def handle_message(event):
         sendMenu(event)
 
     elif mtext == '@我想吃東西':
-        sendDrink(event)
+        sendEat(event)
 
     elif mtext == '@我想喝飲料':
-        sendEat(event)
+        sendDrink(event)
 
 def sendCarousel(event):  #轉盤樣板
     try:
