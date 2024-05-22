@@ -138,9 +138,9 @@ def sendDatetime(event):  #日期時間
                         label="選取日期",
                         data="DateTimePicker^date",  #觸發postback事件
                         mode="date",  #選取日期
-                        initial="2020-10-01",  #顯示初始日期
-                        min="2020-10-01",  #最小日期
-                        max="2021-12-31"  #最大日期
+                        initial="2024-05-22",  #顯示初始日期
+                        min="2024-05-22",  #最小日期
+                        max="2024-12-31"  #最大日期
                     ),
                     DatetimePickerTemplateAction(
                         label="選取時間",
@@ -154,9 +154,9 @@ def sendDatetime(event):  #日期時間
                         label="選取日期時間",
                         data="DateTimePicker^datetime",
                         mode="datetime",  #選取日期時間
-                        initial="2020-10-01T10:00",
-                        min="2020-10-01T00:00",
-                        max="2021-12-31T23:59"
+                        initial="2024-05-22T00:00",
+                        min="2024-05-22T00:00",
+                        max="2024-12-31T23:59"
                     )
                 ]
             )
