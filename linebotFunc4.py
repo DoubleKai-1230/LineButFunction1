@@ -50,7 +50,7 @@ def sendComics(event):  #圖片地圖
             base_size=BaseSize(height=imgheight, width=imgwidth),  #圖片寬及高
             actions=[
                 MessageImagemapAction(  #顯示文字訊息
-                    text='男孩驚慌地從床上醒來，看到時鐘指向早上8:45，驚呼：“哦不！我要遲到了！',
+                    text='1.男孩驚慌地從床上醒來，看到時鐘指向早上8:45，驚呼：“哦不！我要遲到了！',
                     area=ImagemapArea(  #設定圖片範圍:左方1/4區域
                         x=0, 
                         y=0, 
@@ -59,7 +59,7 @@ def sendComics(event):  #圖片地圖
                     )
                 ),
                 MessageImagemapAction(  #顯示文字訊息
-                    text='男孩匆忙地準備好出門，來到學校卻發現教室空無一人，心想：“今天不是有課嗎？',
+                    text='2.男孩匆忙地準備好出門，來到學校卻發現教室空無一人，心想：“今天不是有課嗎？',
                     area=ImagemapArea(  #設定圖片範圍:左方1/4區域
                         x=520, 
                         y=0, 
@@ -68,7 +68,7 @@ def sendComics(event):  #圖片地圖
                     )
                 ),
                 MessageImagemapAction(  #顯示文字訊息
-                    text='男孩在教室裡坐下，看著手機發現一條信息提醒他“今天是假日！”他自言自語：“我真笨！',
+                    text='3.男孩在教室裡坐下，看著手機發現一條信息提醒他“今天是假日！”他自言自語：“我真笨！',
                     area=ImagemapArea(  #設定圖片範圍:左方1/4區域
                         x=0, 
                         y=520, 
@@ -77,7 +77,7 @@ def sendComics(event):  #圖片地圖
                     )
                 ),
                 MessageImagemapAction(  #顯示文字訊息
-                    text='男孩回家後並且回到房間裡，決定繼續睡覺，他說：“既然今天是假日，讓我們再睡一會兒吧！',
+                    text='4.男孩回家後並且回到房間裡，決定繼續睡覺，他說：“既然今天是假日，讓我們再睡一會兒吧！',
                     area=ImagemapArea(  #設定圖片範圍:左方1/4區域
                         x=520, 
                         y=520, 
