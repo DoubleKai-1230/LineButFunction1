@@ -27,7 +27,7 @@ def handle_message(event):
     if mtext == '@彈性配置':
         sendFlex(event)
     
-    elif mtext == '@世新大學':
+    elif mtext == '@星巴克':
         sendSHU(event)
 
 def sendSHU(event):
