@@ -5,7 +5,6 @@ from flask import request, abort
 from linebot import  LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage,TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, QuickReply, QuickReplyButton, MessageAction
-import os
 
 line_bot_api = LineBotApi(os.environ.get('Channel_Access_Token'))
 handler = WebhookHandler(os.environ.get('Channel_Secret'))
@@ -45,8 +44,8 @@ def handle_message(event):
     elif mtext == '@傳送貼圖':
         try:
             message = StickerSendMessage(  #貼圖兩個id需查表
-                package_id='11538',  
-                sticker_id='51626494'
+                package_id='1',  
+                sticker_id='2'
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
@@ -56,8 +55,8 @@ def handle_message(event):
         try:
             message = [  #串列
                 StickerSendMessage(  #傳送貼圖
-                    package_id='11538',  
-                    sticker_id='51626494'
+                    package_id='1',  
+                    sticker_id='2'
                 ),
                 TextSendMessage(  #傳送文字
                     text = "這是 Pizza 圖片！"
@@ -74,10 +73,10 @@ def handle_message(event):
     elif mtext == '@傳送位置':
         try:
             message = LocationSendMessage(
-                title='世新大學',
-                address='116台北市文山區木柵路一段17巷1號',
-                latitude=24.98907,  #緯度
-                longitude=121.54407  #經度
+                title='101大樓',
+                address='台北市信義路五段7號',
+                latitude=25.034207,  #緯度
+                longitude=121.564590  #經度
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
