@@ -8,8 +8,8 @@ from linebot.models import MessageEvent, TextMessage, PostbackEvent, TextSendMes
 from urllib.parse import parse_qsl
 import os
 
-line_bot_api = LineBotApi(os.environ.get('Channel_Access_Token'),'5WCNMJ7+/ZVd9WrkSVDiYko+MgaIZZ1EtOF9e93Oz/+YdCPeH47bKiC1CB+VggLIsqGsRuNbg3WPGlRxTqYyMaEwGV5f3/SI3qldh4dhAlfJirACyEFMekaU75aKaU3iGY800NQ1dYIlol1KOMdPdgdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler(os.environ.get('Channel_Secret'),'43c28d007bea14b83aeb96d957a9484b')
+line_bot_api = LineBotApi(os.environ.get('Channel_Access_Token','5WCNMJ7+/ZVd9WrkSVDiYko+MgaIZZ1EtOF9e93Oz/+YdCPeH47bKiC1CB+VggLIsqGsRuNbg3WPGlRxTqYyMaEwGV5f3/SI3qldh4dhAlfJirACyEFMekaU75aKaU3iGY800NQ1dYIlol1KOMdPdgdB04t89/1O/w1cDnyilFU='))
+handler = WebhookHandler(os.environ.get('Channel_Secret','43c28d007bea14b83aeb96d957a9484b'))
 
 @app.route("/callback", methods=['POST'])
 def callback():
