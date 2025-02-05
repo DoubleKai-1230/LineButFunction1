@@ -9,10 +9,10 @@ import random
 
 import os
 
-line_bot_api = LineBotApi(os.environ.get('Channel_Access_Token','YzwOno6QuUc+LFOCGAwZZWrHs9t9M89QPXbycGrYBtBfDNCIgOphhp55Q4fGDiUhOS3yxtVALZMLhOktQRDu/kwC7Xv55ULmaT+fWwUD3BEk27+1WqDB47QjXhoauyV2rXN4uwjcUP5IoxplGUFvagdB04t89/1O/w1cDnyilFU='))
-handler = WebhookHandler(os.environ.get('Channel_Secret','a97c5fd8154d67e02a4ebcd665550e30'))
+line_bot_api = LineBotApi(os.environ.get('Channel_Access_Token'))
+handler = WebhookHandler(os.environ.get('Channel_Secret'))
 
-happyList = ["鞥比腦婆，我愛妳喔!","鞥比腦婆，你是最棒的!","鞥比腦婆，你是大美呂!","鞥比腦婆，可愛寶寶!","鞥比腦婆，呱!"]
+genai.configure(api_key=os.environ.get("API_KEY"))
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -27,11 +27,15 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     mtext = event.message.text
-    if mtext == "我需要正能量":
-        message = TextSendMessage(
-            text = random.choice(happyList)
-        )
-        line_bot_api.reply_message(event.reply_token,message)
+    
+    model = genai.GenerativeModel("gemini-1.5-flash",
+                              system_instruction="你是一個充滿正能量的 AI 助手，請在每次回應時包含積極、鼓勵的語氣，並且幫助使用者以最正向的方式解決問題。長話短說，給予最有力量的文句。")
+    chat = model.start_chat(history=[])
+    response = chat.send_message(mtext)
+    message = TextSendMessage(
+        text = response.text
+    )
+    line_bot_api.reply_message(event.reply_token,message)
     
 
 
