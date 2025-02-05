@@ -72,7 +72,7 @@ system_prompt = """你是一個充滿正能量的 AI 助手，你的目標是讓
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     mtext = event.message.text
-    user_id = event.source.userId
+    user_id = event.source.user_id
     if user_id in user_hist:
         while len(user_hist[user_id])>4:
             user_hist[user_id].pop(0)
