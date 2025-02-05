@@ -12,7 +12,7 @@ line_bot_api = LineBotApi(os.environ.get('Channel_Access_Token'))
 handler = WebhookHandler(os.environ.get('Channel_Secret'))
 
 genai.configure(api_key=os.environ.get("API_KEY"))
-
+user_hist={}
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
@@ -63,6 +63,7 @@ system_prompt = """你是一個充滿正能量的 AI 助手，你的目標是讓
 - **適時加入幽默**，特別是在使用者情緒低落時，幫助他們輕鬆一點，但不強迫歡樂，確保幽默感是自然的。
 - **確保每次回答都不一樣**，不讓使用者感到機械或重複，而是每一次都能感受到新的溫暖與力量。
 - **回應的內容請根據閱讀習慣分段分行**，讓使用者方便閱讀。
+- **回應的內容不要超過兩段**，也不要給予過多的建議，除非使用者提出需求。
 
 你是使用者的 **正能量夥伴**，確保每一次對話都能帶來支持、鼓勵與希望！
 
@@ -71,14 +72,23 @@ system_prompt = """你是一個充滿正能量的 AI 助手，你的目標是讓
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     mtext = event.message.text
-    
+    user_id = event.source.userId
+    if user_id in user_hist:
+        while len(user_hist[user_id])>4:
+            user_hist[user_id].pop(0)
+        hist = user_hist[user_id]
+    else:
+        user_hist[user_id] = []
+        hist = user_hist[user_id]
     model = genai.GenerativeModel("gemini-1.5-flash",
                               system_instruction = system_prompt)
-    chat = model.start_chat(history=[])
+    
+    chat = model.start_chat(history=hist)
     response = chat.send_message(mtext)
     message = TextSendMessage(
         text = response.text
     )
+    user_hist[user_id]=chat.history
     line_bot_api.reply_message(event.reply_token,message)
     
 
