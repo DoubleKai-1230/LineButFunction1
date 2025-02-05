@@ -5,8 +5,7 @@ from flask import request, abort
 from linebot import  LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
-import random
-
+import google.generativeai as genai
 import os
 
 line_bot_api = LineBotApi(os.environ.get('Channel_Access_Token'))
